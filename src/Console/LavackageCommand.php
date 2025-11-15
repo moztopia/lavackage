@@ -3,21 +3,24 @@
 namespace Moztopia\Lavackage\Console;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Output\OutputInterface;
 
 abstract class LavackageCommand extends Command
 {
-    public function banner(): string
+    public function handle(): int
     {
-        $name = $this->getName() ?? 'unknown';
-        $text = "🐟 Moztopia Lavackage {$name}";
+        $this->banner();
 
-        return "{$text}" . PHP_EOL;
+        return self::SUCCESS;
     }
 
-    public function line($string, $style = null, $verbosity = OutputInterface::VERBOSITY_NORMAL, int $icon = 0): void
+    protected function banner(): void
     {
-        $prefix = $icon === 0 ? '👉' : '👉';
-        parent::line("{$prefix} {$string}", $style, $verbosity);
+        $name = $this->getName() ?? 'unknown';
+        $text = "Moztopia Lavackage {$name}";
+
+        $this->info($text);
+        $this->newLine();
+
+        return;
     }
 }

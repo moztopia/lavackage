@@ -16,16 +16,17 @@ class LogCommand extends LavackageCommand
 
     protected $description = 'Moztopia Lavackage log utility with clear, backup, threshold, and max-backups options';
 
-    public function handle(): void
+    public function handle(): int
     {
-        $this->line($this->banner());
+        parent::handle();
 
         $verbose = $this->getOutput()->getVerbosity();
         $logPath = storage_path('logs/laravel.log');
 
         if (! file_exists($logPath)) {
             $this->warn('⚠️ Log file does not exist.');
-            return;
+            
+            return self::FAILURE;
         }
 
         $thresholdMb = $this->option('threshold');
@@ -33,7 +34,8 @@ class LogCommand extends LavackageCommand
             $fileSizeMb = round(filesize($logPath) / (1024 * 1024), 2);
             if ($fileSizeMb < (float) $thresholdMb) {
                 $this->info("ℹ️ Log size is {$fileSizeMb} MB, below threshold of {$thresholdMb} MB. No action taken.");
-                return;
+
+                return self::SUCCESS;
             }
         }
 
@@ -52,7 +54,8 @@ class LogCommand extends LavackageCommand
                 }
             } else {
                 $this->error("❌ Failed to create backup.");
-                return;
+
+                return self::FAILURE;
             }
         }
 
@@ -70,6 +73,8 @@ class LogCommand extends LavackageCommand
                 $this->line('Verbose level 3: Full diagnostic output available.');
             }
         }
+
+        return self::SUCCESS;
     }
 
     protected function enforceMaxBackups(int $maxBackups): void

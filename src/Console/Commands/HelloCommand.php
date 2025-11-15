@@ -12,7 +12,7 @@ class HelloCommand extends LavackageCommand
 
     public function handle(): int
     {
-        $this->line($this->banner());
+        parent::handle();
 
         $name = $this->argument('name') ?? 'World';
         $this->info("Hello {$name}! ... from Lavackage!");

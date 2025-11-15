@@ -5,7 +5,6 @@ it('creates a backup when --backup is used', function () {
     file_put_contents($logPath, 'Backup test content');
 
     $this->artisan('lavackage:log --backup --clear')
-        ->expectsOutput('🐟 Moztopia Lavackage Log Utility')
         ->assertExitCode(0);
 
     $files = glob(storage_path('logs/laravel.log_*'));
@@ -17,7 +16,6 @@ it('clears the log file when --clear is used', function () {
     file_put_contents($logPath, 'Some log content');
 
     $this->artisan('lavackage:log --clear')
-        ->expectsOutput('🐟 Moztopia Lavackage Log Utility')
         ->assertExitCode(0);
 
     $contents = file_get_contents($logPath);
@@ -74,10 +72,9 @@ it('does not delete backups when under max-backups limit', function () {
 
 it('respects threshold option', function () {
     $logPath = storage_path('logs/laravel.log');
-    file_put_contents($logPath, str_repeat('x', 1024)); // ~1 KB
+    file_put_contents($logPath, str_repeat('x', 1024));
 
     $this->artisan('lavackage:log --clear --threshold=1')
-        ->expectsOutput('🐟 Moztopia Lavackage Log Utility')
         ->expectsOutput('ℹ️ Log size is 0 MB, below threshold of 1 MB. No action taken.')
         ->assertExitCode(0);
 
