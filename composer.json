@@ -3,9 +3,8 @@
     "description": "A Laravel 11+ Package used for helpers, commands, and other common frameworks.",
     "type": "library",
     "require": {
-        "illuminate/support": "^11.0",
-        "illuminate/console": "^11.0",
-        "illuminate/log": "^11.0"
+        "php": "^8.2",
+        "laravel/framework": "^11.0"
     },
     "require-dev": {
         "orchestra/testbench": "^9.0",
@@ -25,7 +24,7 @@
     },
     "authors": [
         {
-            "name": "Hello",
+            "name": "Moztopia",
             "email": "hello@moztopia.com"
         }
     ],
@@ -33,5 +32,24 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Moztopia\\Lavackage\\LavackageServiceProvider"
+            ]
+        }
+    },
+    "keywords": [
+        "laravel",
+        "package",
+        "commands",
+        "logging",
+        "moztopia"
+    ],
+    "homepage": "https://www.moztopia.com",
+    "support": {
+        "issues": "https://github.com/moztopia/lavackage/issues",
+        "source": "https://github.com/moztopia/lavackage"
     }
 }
