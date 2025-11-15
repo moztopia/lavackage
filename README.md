@@ -1,28 +1,76 @@
-## 🧱 Devlite Core Setup
+## 📦 Lavackage
 
-To get started with **Devlite Core**, make sure your `.devcontainer/devcontainer.json` file has the correct workspace folder path.
+**Moztopia Lavackage** is a Laravel 11+ package offering contributor-friendly commands, logging utilities, and shared framework helpers. Designed for clarity, reversibility, and ergonomic workflows.
 
-### 🔧 Step 1: Update `workspaceFolder`
+---
 
-Open `.devcontainer/devcontainer.json` and locate this line:
+### 🚀 Installation
 
-```json
-"workspaceFolder": "/READ the README.md file",
+```bash
+composer require moztopia/lavackage
 ```
 
-Replace it with the actual name of your project directory. For example, if your project is named `my_project`, update it to:
+Lavackage uses Laravel's auto-discovery, so no manual provider registration is needed.
 
-```json
-"workspaceFolder": "/my_project",
+---
+
+### 🛠️ Available Commands
+
+#### `lavackage:log`
+
+Manage Laravel's default log file with clear, reversible options:
+
+```bash
+php artisan lavackage:log [--clear] [--backup] [--threshold=LEVEL]
 ```
 
-### 🔄 Step 2: Reload in Dev Container
+- `--clear` → wipes `laravel.log` safely  
+- `--backup` → creates a timestamped backup before clearing  
+- `--threshold=LEVEL` → filters log entries by severity (`info`, `warning`, `error`, etc.)
 
-After saving the file:
+---
 
-1. Close the folder in VS Code.
-2. Reopen the folder.
-3. When prompted, click **“Reopen in Container”**.
+### 🧪 Testing
 
-That’s it — you’re now running inside **Devlite Core**:
-Ubuntu 22.04, MariaDB, Redis, and subtle perfection.
+Lavackage uses Pest + Testbench for isolated Laravel testing:
+
+```bash
+./vendor/bin/pest
+```
+
+All tests run inside a temporary Laravel sandbox — no files are written to your repo.
+
+---
+
+### 🧩 Package Structure
+
+```
+src/
+├── Console/
+│   └── Commands/
+│       └── LogCommand.php
+├── LavackageServiceProvider.php
+tests/
+└── Feature/
+    └── Commands/
+        └── Log/
+            └── LogBackupTest.php
+```
+
+---
+
+### 🧑‍💻 Contributing
+
+We welcome PRs and feedback! Please follow Moztopia’s contributor guidelines:
+
+- Use branded headers and blank lines for clarity  
+- Ensure all commands are reversible and container-safe  
+- Log operator actions via Laravel-native methods
+
+---
+
+### 🌐 Links
+
+- 🌍 [Moztopia](https://www.moztopia.com)  
+- 🐘 [Packagist: moztopia/lavackage](https://packagist.org/packages/moztopia/lavackage)  
+- 🛠️ [GitHub: moztopia/lavackage](https://github.com/moztopia/lavackage)
