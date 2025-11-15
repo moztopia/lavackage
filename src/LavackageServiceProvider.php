@@ -5,6 +5,7 @@ namespace Moztopia\Lavackage;
 use Illuminate\Support\ServiceProvider;
 use Moztopia\Lavackage\Console\Commands\HelloCommand;
 use Moztopia\Lavackage\Console\Commands\LogCommand;
+use Moztopia\Lavackage\Console\Commands\VersionCommand;
 
 class LavackageServiceProvider extends ServiceProvider
 {
@@ -13,6 +14,7 @@ class LavackageServiceProvider extends ServiceProvider
         $this->commands([
             HelloCommand::class,
             LogCommand::class,
+            VersionCommand::class
         ]);
     }
 
