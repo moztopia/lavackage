@@ -2,9 +2,6 @@ services:
   ubuntu:
     container_name: workstation_${COMPOSE_PROJECT_NAME}
     image: mcr.microsoft.com/devcontainers/base:ubuntu-${UBUNTU_VERSION}
-    ports:
-      - "${HTTP_PORT}:8000"
-      - "${VITE_PORT}:5173"
     restart: "unless-stopped"
     tty: true
     stop_signal: SIGTERM
