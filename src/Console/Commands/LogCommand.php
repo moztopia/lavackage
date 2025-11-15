@@ -2,11 +2,11 @@
 
 namespace Moztopia\Lavackage\Console\Commands;
 
-use Illuminate\Console\Command;
+use Moztopia\Lavackage\Console\LavackageCommand;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 
-class LogCommand extends Command
+class LogCommand extends LavackageCommand
 {
     protected $signature = 'lavackage:log
                             {--clear : Clear the log file}
@@ -18,7 +18,7 @@ class LogCommand extends Command
 
     public function handle(): void
     {
-        $this->line('<info>🐟 Moztopia Lavackage Log Utility</info>');
+        $this->line($this->banner());
 
         $verbose = $this->getOutput()->getVerbosity();
         $logPath = storage_path('logs/laravel.log');

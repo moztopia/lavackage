@@ -2,18 +2,17 @@
 
 namespace Moztopia\Lavackage\Console\Commands;
 
-use Illuminate\Console\Command;
+use Moztopia\Lavackage\Console\LavackageCommand;
 use Illuminate\Support\Facades\Log;
-use Moztopia\Lavackage\Helpers\BannerHelper;
 
-class HelloCommand extends Command
+class HelloCommand extends LavackageCommand
 {
     protected $signature = 'lavackage:hello {name?}';
     protected $description = 'Say hello from Lavackage and log the event';
 
     public function handle(): int
     {
-        $this->line(BannerHelper::banner($this));
+        $this->line($this->banner());
 
         $name = $this->argument('name') ?? 'World';
         $this->info("Hello {$name}! ... from Lavackage!");

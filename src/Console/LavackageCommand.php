@@ -1,14 +1,14 @@
 <?php
 
-namespace Moztopia\Lavackage\Helpers;
+namespace Moztopia\Lavackage\Console;
 
 use Illuminate\Console\Command;
 
-class BannerHelper
+abstract class LavackageCommand extends Command
 {
-    public static function banner(?Command $command = null): string
+    public function banner(): string
     {
-        $name = $command?->getName() ?? 'unknown';
+        $name = $this->getName() ?? 'unknown';
         $text = "🐟 Moztopia Lavackage {$name}";
         $border = str_repeat('─', strlen($text));
 
