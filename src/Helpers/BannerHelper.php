@@ -10,7 +10,7 @@ class BannerHelper
     {
         $name = $command?->getName() ?? 'unknown';
         $text = "🐟 Moztopia Lavackage {$name}";
-        $border = str_repeat('─', strlen($text) + 2);
+        $border = str_repeat('─', strlen($text));
 
         return PHP_EOL
             . "┌{$border}┐" . PHP_EOL
