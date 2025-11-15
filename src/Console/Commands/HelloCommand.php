@@ -4,6 +4,7 @@ namespace Moztopia\Lavackage\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
+use Moztopia\Lavackage\Helpers\BannerHelper;
 
 class HelloCommand extends Command
 {
@@ -12,6 +13,8 @@ class HelloCommand extends Command
 
     public function handle(): int
     {
+        $this->line(BannerHelper::banner($this));
+
         $name = $this->argument('name') ?? 'World';
         $this->info("Hello {$name}! ... from Lavackage!");
         
