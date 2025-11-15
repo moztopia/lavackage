@@ -43,6 +43,10 @@
             "dev-develop": "0.0.x-dev"
         }
     },
+    "scripts": {
+        "test": "pest",
+        "lint": "pint"
+    },
     "keywords": [
         "laravel",
         "package",
