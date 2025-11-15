@@ -25,3 +25,5 @@ test/*
 
 !**/.gitkeep
 !test/test*.sh
+
+/vendor/
