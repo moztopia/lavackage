@@ -11,11 +11,12 @@ class LogCommand extends Command
     protected $signature = 'lavackage:log
                             {--clear : Clear the log file}
                             {--backup : Backup the log before clearing}
-                            {--threshold= : Minimum log size in MB before clearing}';
+                            {--threshold= : Minimum log size in MB before clearing}
+                            {--max-backups=0 : Maximum number of backup files to keep (0 = unlimited)}';
 
-    protected $description = 'Moztopia Lavackage log utility with clear, backup, and threshold options';
+    protected $description = 'Moztopia Lavackage log utility with clear, backup, threshold, and max-backups options';
 
-    public function handle()
+    public function handle(): void
     {
         $this->line('<info>🐟 Moztopia Lavackage Log Utility</info>');
 
@@ -44,6 +45,11 @@ class LogCommand extends Command
                 if ($verbose >= 32) {
                     $this->info("📦 Backup created: {$backupPath}");
                 }
+
+                $maxBackups = (int) $this->option('max-backups');
+                if ($maxBackups > 0) {
+                    $this->enforceMaxBackups($maxBackups);
+                }
             } else {
                 $this->error("❌ Failed to create backup.");
                 return;
@@ -62,6 +68,19 @@ class LogCommand extends Command
             }
             if ($verbose >= 128) {
                 $this->line('Verbose level 3: Full diagnostic output available.');
+            }
+        }
+    }
+
+    protected function enforceMaxBackups(int $maxBackups): void
+    {
+        $backupFiles = glob(storage_path('logs/laravel.log_*'));
+        if (count($backupFiles) > $maxBackups) {
+            usort($backupFiles, fn($a, $b) => filemtime($a) <=> filemtime($b));
+            $filesToDelete = array_slice($backupFiles, 0, count($backupFiles) - $maxBackups);
+            foreach ($filesToDelete as $file) {
+                @unlink($file);
+                $this->warn("🗑️ Deleted old backup: {$file}");
             }
         }
     }
