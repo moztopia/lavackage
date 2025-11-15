@@ -12,8 +12,8 @@ class HelloCommand extends Command
 
     public function handle(): int
     {
-        $name = $this->argument('name') ?? 'world';
-        $this->info("Hello, {$name} from Lavackage!");
+        $name = $this->argument('name') ?? 'World';
+        $this->info("Hello {$name}! ... from Lavackage!");
         
         Log::info("lavackage:hello executed", ['name' => $name]);
 
