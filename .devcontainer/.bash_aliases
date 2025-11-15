@@ -1,6 +1,6 @@
 # Create Helper Functions
 
-alias run_tests="./vendor/bin/pest"
+alias run_tests="cd /lavackage ; ./vendor/bin/pest"
 
 version() {
   echo "lsb_release -a"

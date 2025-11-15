@@ -3,20 +3,21 @@
 namespace Moztopia\Lavackage;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Log;
 use Moztopia\Lavackage\Console\Commands\HelloCommand;
+use Moztopia\Lavackage\Console\Commands\LogCommand;
 
 class LavackageServiceProvider extends ServiceProvider
 {
-    public function register(): void
+    public function register()
     {
-    }
-
-    public function boot(): void
-    {
-        Log::info('LavackageServiceProvider booted.');
         $this->commands([
             HelloCommand::class,
+            LogCommand::class,
         ]);
+    }
+
+    public function boot()
+    {
+        //
     }
 }
