@@ -38,6 +38,9 @@
             "providers": [
                 "Moztopia\\Lavackage\\LavackageServiceProvider"
             ]
+        },
+        "branch-alias": {
+            "dev-develop": "0.0.x-dev"
         }
     },
     "keywords": [
