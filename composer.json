@@ -1,6 +1,7 @@
 {
     "name": "moztopia/lavackage",
-    "description": "A Laravel 11+ Package used for helpers, commands, and other common frameworks.",
+    "description": "A Laravel 12+ Package used for helpers, commands, and other common tools.",
+    "version": "0.1.0",
     "type": "library",
     "require": {
         "php": "^8.3",
