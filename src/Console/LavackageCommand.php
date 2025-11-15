@@ -10,11 +10,14 @@ abstract class LavackageCommand extends Command
     {
         $name = $this->getName() ?? 'unknown';
         $text = "🐟 Moztopia Lavackage {$name}";
-        $border = str_repeat('─', strlen($text));
 
-        return PHP_EOL
-            . "┌{$border}┐" . PHP_EOL
-            . "│ {$text} │" . PHP_EOL
-            . "└{$border}┘" . PHP_EOL;
+        return "{$text}" . PHP_EOL;
+    }
+
+    public function line($string, $style = null, $verbosity = self::VERBOSITY_NORMAL, int $icon = 0): void
+    {
+        $prefix = $icon === 0 ? '👉' : '👉';
+        
+        parent::line("{$prefix} {$string}", $style, $verbosity);
     }
 }
