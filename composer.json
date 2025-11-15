@@ -3,8 +3,8 @@
     "description": "A Laravel 11+ Package used for helpers, commands, and other common frameworks.",
     "type": "library",
     "require": {
-        "php": "^8.2 || ^8.3",
-        "laravel/framework": ">=11.0"
+        "php": "^8.3",
+        "laravel/framework": ">=12.0"
     },
     "require-dev": {
         "orchestra/testbench": "^9.0",
