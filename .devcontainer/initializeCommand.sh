@@ -61,7 +61,7 @@ echo -e ""
 
 echo "Clearing Container logs..."
 
-rm -f $PWD/.devcontainer/mariadb/log/*.log
-rm -f $PWD/.devcontainer/redis/log/*.log
+# rm -f $PWD/.devcontainer/mariadb/log/*.log
+# rm -f $PWD/.devcontainer/redis/log/*.log
 
 ##### Add your changes below here.

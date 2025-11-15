@@ -18,6 +18,11 @@
             "Moztopia\\Lavackage\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Hello",
